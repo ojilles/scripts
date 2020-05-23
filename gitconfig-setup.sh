@@ -16,3 +16,6 @@ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(ye
 git config --global alias.di "diff"
 git config --global alias.st "status"
 git config --global credential.helper 'cache --timeout=9999999'
+
+git config --global user.email "ojilles@gmail.com"
+git config --global user.name "Jilles Oldenbeuving"
