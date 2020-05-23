@@ -10,7 +10,6 @@
 echo "Input file [$1.wav] || date `date`" > "$1".ffmpeg.txt
 ffmpeg -hide_banner -i "$1".wav >> "$1".ffmpeg.txt 2>&1
 
-#ffmpeg -hide_banner -i "$1".wav -af lowpass=15000,highpass=200 "$1".tmp.wav >> "$1".ffmpeg.txt 2>&1
 # loudness should be -23, per https://www.auphonic.com/blog/2013/01/07/loudness-targets-mobile-audio-podcasts-radio-tv/
 # -f force overwrite
 # -nt normalization scheme with -t level
