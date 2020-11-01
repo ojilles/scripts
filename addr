@@ -6,4 +6,5 @@
 ifconfig -a        |
 grep 'inet '       |
 grep broadcast     |
+grep '192'	   |
 awk '{ print $2 }'

@@ -1,0 +1,25 @@
+#
+
+# https://forums.plex.tv/t/linux-tips/276247/3
+# sudo systemctl stop plexmediaserver
+
+# Auto updating plex through crontab under user root, origin:
+# https://github.com/mrworf/plexupdate
+bashtop
+
+# check status of sonarr
+sudo systemctl status sonarr.service
+
+# find all files of certain type, create directory, then move that one file into it
+find . -name "*.mkv" -exec sh -c 'mkdir "${1%.*}" ; mv "${1%}" "${1%.*}" ' _ {} \;
+
+# use jq to only print out the first order/layer of keys:
+cat testep | jq 'reduce path(.[]?) as $path (.; setpath($path; {}))'
+
+#run a command each time you save in VIM
+#https://stackoverflow.com/questions/4627701/how-to-automatically-execute-a-shell-command-after-saving-a-file-in-vim
+autocmd BufWritePost * !run_tests.sh 
+
+# iopy a playlist from youtube locally (install youtube-dl first)
+##export URL=https://www.youtube.com/playlist?list=PLVGhAh2ZX6KVop81mnGULKY92v8Spkylc
+youtube-dl -s --download-archive youtube.archive --write-info-json --write-thumbnail --all-subs --recode-video mp4 -k "$URL"
