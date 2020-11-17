@@ -5,7 +5,7 @@ URLS=$(cat <<-END
 	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KXiffmcUICeCCUkEr-bos6I	General Interest
 	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KVGzFirJnBTdMyoLqBAPHjA	Skiing
 	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KVop81mnGULKY92v8Spkylc	My Vlogs
-	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KXWAjIwF3wfmNn2gE4yuUpR	Boating
+        https://www.youtube.com/playlist?list=PLVGhAh2ZX6KXWAjIwF3wfmNn2gE4yuUpR	Boating
 	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KVvL8umxAyu1aZ-gK9271ZG	Audio Video Editing
 	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KViMurYp1X27kofJFt7OiRm	HFLC
 	https://www.youtube.com/playlist?list=PLVGhAh2ZX6KX4qVmJDK2id-N0MUKZ2HHG	Awesome Legacy matches
@@ -20,10 +20,13 @@ do
 	if [[ $URL == https* ]]
 	then
 		echo $URL
-		youtube-dl --download-archive /home/ojilles/youtube-dl/youtube.archive \
+		./youtube-dl --download-archive /home/ojilles/youtube-dl/youtube.archive \
 		 -f best \
-		 --write-info-json --write-thumbnail --ignore-errors \
-		 -o '%(playlist_title)s/%(title)s.%(ext)s' \
+		 --ignore-errors \
+		 --no-call-home \
+		 --restrict-filenames \
+		 --cookies ./cookies.txt \
+		 -o './%(playlist_title)s/%(upload_date)s-%(id)s-%(title)s.%(ext)s' \
 		 "$URL"
 	fi
 done
