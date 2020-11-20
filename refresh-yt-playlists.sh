@@ -39,3 +39,5 @@ echo Summary at `date`
 echo Items in the archive: 		`wc -l "$DEST"/youtube.archive`
 echo Items on disk: 			`ls -lR $DEST | grep "^-" | wc -l`
 echo Size and last changed file:	`du -h  $DEST -s --time`
+echo Last three:
+find $DEST -type f -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1,NR==4 {print $2}' | tail -n 3
