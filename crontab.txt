@@ -23,5 +23,5 @@
 # m h  dom mon dow   command
 
 0 5 * * * cd /home/ojilles/youtube-dl; ./refresh-yt-playlists.sh >> /home/ojilles/youtube-dl/cron.log 2>&1
-0 21 * * * cd /home/ojilles/westendorf-webcam; ./update-westendorf-webcam.sh >> /home/ojilles/westendorf-webcam/cron.log 2>&1
-51 21 1 * * cd /home/ojilles/westendorf-webcam/pics; ffmpeg -framerate 4/1 -y -f image2 -pattern_type glob -i '*.jpg' -r 25 video.mp4
+0 21 * * * cd /home/ojilles/westendorf-webcam; ./westendorf-webcam-update.sh >> /home/ojilles/westendorf-webcam/cron-update.log 2>&1
+51 21 * * 1 cd /home/ojilles/westendorf-webcam; ./westendorf-webcam-video.sh >> /home/ojilles/westendorf-webcam/cron-video.log 2>&1
